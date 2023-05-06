@@ -37,6 +37,7 @@ Implementation of Hand Gesture Keyboard that detects hand gestures using OpenCV 
 ## Known Issues
 
 - The code assumes a single hand in the frame and may not work correctly with multiple hands.
+- To ensure optimal keyboard control accuracy, position your hand at a moderate distance from the camera, avoiding extremes of closeness or distance..
 
 ## License
 
