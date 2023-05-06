@@ -1,5 +1,9 @@
 # Hand Gesture Keyboard
 
+**Note: This code will only run in Python versions below 3.10 due to compatibility issues with the mediapipe library.**
+
+## Purpose
+
 Implementation of Hand Gesture Keyboard that detects hand gestures using OpenCV and the HandTrackingModule. It tracks hand movements from a webcam and associates them with keyboard buttons. Users can interact by hovering over buttons and performing a click gesture by bringing the tip of their index finger close to the middle finger. The code utilizes OpenCV, HandTrackingModule, time, numpy, and pynput.keyboard libraries. It offers a creative and engaging method for text input, transforming user experiences through intuitive hand movements.
 
 ## Installation
