@@ -2,7 +2,6 @@ import cv2
 import HandTrackingModule as htm
 from time import sleep
 import numpy as np
-import cvzone
 from pynput.keyboard import Controller
 
 cap = cv2.VideoCapture(0)
@@ -19,25 +18,14 @@ finalText = ""
 
 keyboard = Controller()
 
-# def drawAll(img, buttonList):
-#     for button in buttonList:
-#         x, y = button.pos
-#         w, h = button.size
-#         cvzone.cornerRect(img, (button.pos[0], button.pos[1], button.size[0], button.size[1]),
-#                           20, rt=0)
-#         cv2.rectangle(img, button.pos, (x + w, y + h),
-#                       (255, 0, 255), cv2.FILLED)
-#         cv2.putText(img, button.text, (x + 20, y + 65),
-#                     cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 4)
-#     return img
-
 
 def drawAll(img, buttonList):
     imgNew = np.zeros_like(img, np.uint8)
     for button in buttonList:
         x, y = button.pos
-        cvzone.cornerRect(imgNew, (button.pos[0], button.pos[1], button.size[0], button.size[1]),
-                          20, rt=0)
+
+        detector.cornerRect(imgNew, (button.pos[0], button.pos[1], button.size[0], button.size[1]),
+                            20, rt=0)
         cv2.rectangle(imgNew, button.pos, (x + button.size[0], y + button.size[1]),
                       (255, 0, 255), cv2.FILLED)
         cv2.putText(imgNew, button.text, (x + 40, y + 60),
@@ -78,8 +66,14 @@ while True:
             x, y = button.pos
             w, h = button.size
             if (x < lmList[8][0] < x + w) and (y < lmList[8][1] < y + h):
+
+                # When in range of any button
+                detector.cornerRect(
+                    img, (button.pos[0], button.pos[1], button.size[0], button.size[1]), 10, rt=0, colorC=(255, 0, 0))
+
                 cv2.rectangle(img, button.pos, (x + w, y + h),
                               (175, 0, 175), cv2.FILLED)
+
                 cv2.putText(img, button.text, (x + 20, y + 65),
                             cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 4)
 
